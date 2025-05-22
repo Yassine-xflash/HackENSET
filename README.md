@@ -22,7 +22,7 @@ Suivez ces étapes pour configurer et lancer l'application localement :
 
 1.  **Cloner le dépôt :**
     ```bash
-    git clone <URL_DU_DEPOT>
+    git clone https://github.com/Yassine-xflash/HackENSET.git
     cd sipa_app
     ```
 
