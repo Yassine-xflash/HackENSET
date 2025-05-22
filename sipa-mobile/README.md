@@ -1,126 +1,134 @@
-<<<<<<< HEAD
-# SIPA - Système Intelligent de Préservation de l'Intégrité Académique (MVP Hackathon)
+# SIPA: Academic Integrity Preservation System
 
-Ce projet est un prototype développé pour le "Hackathon IA Vigilante 2025". Il vise à démontrer une solution intégrée pour la détection et la prévention de la fraude académique, en combinant l'analyse textuelle, la surveillance visuelle en temps réel (reconnaissance faciale, mouvements, objets) et la détection d'activité vocale inattendue, le tout soutenu par un assistant proactif et pédagogique.
+*Developed for the Hackathon IA Vigilante 2025*
 
-## Fonctionnalités du MVP
+This project is a prototype designed to demonstrate an integrated solution for detecting and preventing academic fraud. It combines text analysis, real-time visual and audio surveillance, and a proactive educational assistant to uphold academic integrity.
 
-* **Analyse de Soumission Textuelle :** Détection simulée de plagiat sémantique et de contenu généré par IA.
-* **Simulation d'Examen en Temps Réel :**
-    * **Reconnaissance Faciale :** Vérification simulée de l'identité de l'étudiant via la webcam.
-    * **Suivi des Mouvements de la Tête :** Détection simulée de mouvements anormaux (regards sur le côté, etc.).
-    * **Détection de Visages Multiples :** Alerte si une autre personne apparaît dans le cadre.
-    * **Détection d'Objets Suspects :** Alerte si un téléphone ou un papier est détecté.
-    * **Détection de Voix Externe :** Alerte si une activité vocale inattendue est détectée via le microphone.
-    * **Note Importante :** Pour l'MVP, les modèles d'IA sont simplifiés/simulés. Aucune vidéo ou audio n'est enregistrée.
-* **Assistant Proactif (Chatbot) :** Un chatbot basé sur des règles simples pour répondre aux questions sur l'intégrité académique et fournir des conseils contextuels post-détection.
-* **Tableau de Bord Éducateur :** Affiche les alertes de détection loguées (textuelles et visuelles/audio) pour une vue d'ensemble.
-* **Base de Données Simple :** Utilise SQLite pour stocker les logs de détection.
+## Table of Contents
 
-## Installation et Lancement
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation and Setup](#installation-and-setup)
+- [Using the Application](#using-the-application)
+- [Ethical Considerations](#ethical-considerations)
+- [Limitations of the MVP](#limitations-of-the-mvp)
+- [Mobile Application (Expo App)](#mobile-application-expo-app)
+  - [Get Started](#get-started)
+  - [Get a Fresh Project](#get-a-fresh-project)
+  - [Learn More](#learn-more)
+  - [Join the Community](#join-the-community)
 
-Suivez ces étapes pour configurer et lancer l'application localement :
+## Introduction
 
-1.  **Cloner le dépôt :**
-    ```bash
-    git clone https://github.com/Yassine-xflash/HackENSET.git
-    cd HackENSET
-    ```
+The SIPA (Système Intelligent de Préservation de l'Intégrité Académique) project is a Minimum Viable Product (MVP) developed for the Hackathon IA Vigilante 2025. It aims to combat academic dishonesty by integrating advanced detection mechanisms—such as plagiarism and AI-generated content analysis, real-time exam monitoring with facial recognition, and movement tracking—with a chatbot that educates users on academic integrity.
 
-2.  **Créer un environnement virtuel et installer les dépendances :**
-    Il est fortement recommandé d'utiliser un environnement virtuel pour isoler les dépendances.
-    ```bash
-    python -m venv venv
-    source venv/bin/activate   # Sur Windows : `venv\Scripts\activate`
-    pip install -r requirements.txt
-    ```
-    *Note : L'installation de `dlib` et `PyAudio` peut nécessiter des outils de compilation système. Référez-vous à leur documentation officielle si vous rencontrez des erreurs.*
+## Features
 
-3.  **Préparer l'image d'enrôlement facial :**
-    Créez un dossier `static/img/` à la racine de `HackENSET/` si ce n'est pas déjà fait.
-    Placez une image de visage claire nommée `known_student_face.jpg` dans ce dossier. Cette image sera utilisée pour simuler l'enrôlement de l'étudiant de démonstration. Si vous ne placez pas d'image, une image placeholder sera générée au démarrage.
+- **Text Submission Analysis:** Simulated detection of semantic plagiarism and AI-generated content.
+- **Real-Time Exam Simulation:**
+  - **Facial Recognition:** Simulated identity verification using a webcam.
+  - **Head Movement Tracking:** Alerts for abnormal movements (e.g., looking sideways).
+  - **Multiple Face Detection:** Alerts if another person appears in the frame.
+  - **Suspicious Object Detection:** Alerts for detected phones or papers.
+  - **External Voice Detection:** Alerts for unexpected vocal activity via microphone.
+  - *Note:* AI models in this MVP are simplified/simulated; no video or audio is recorded.
+- **Proactive Assistant (Chatbot):** A rule-based chatbot offering guidance on academic integrity and contextual advice post-detection.
+- **Educator Dashboard:** Displays logged detection alerts (textual and visual/audio) for oversight.
+- **Simple Database:** Utilizes SQLite to store detection logs.
 
-4.  **Lancer l'application Flask :**
-    ```bash
-    python app.py
-    ```
-    Le serveur devrait démarrer et être accessible à l'adresse `http://127.0.0.1:5000/` (ou `http://localhost:5000/`).
+## Installation and Setup
 
-## Utilisation de l'Application
+Follow these steps to set up and run the application locally:
 
-* **Page d'Accueil (`/`) :** Choisissez d'accéder au portail Étudiant ou Éducateur.
-* **Portail Étudiant (`/student`) :**
-    * **Analyse Textuelle :** Collez du texte et cliquez sur "Analyser le Devoir". Les résultats (plagiat, IA) s'afficheront.
-    * **Simulation d'Examen :** Cliquez sur "Démarrer l'Examen". Accordez les permissions pour la webcam et le microphone. Le système affichera des alertes en temps réel. Cliquez sur "Arrêter l'Examen" pour mettre fin à la simulation.
-    * **Assistant Proactif :** Interagissez avec le chatbot pour poser des questions sur l'intégrité académique.
-* **Tableau de Bord Éducateur (`/educator`) :**
-    * Visualisez les alertes de détection (textuelles et visuelles/audio) qui ont été loguées. La page se met à jour automatiquement.
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/Yassine-xflash/HackENSET.git
+   cd HackENSET
+   ```
 
-## Considérations Éthiques (pour le Hackathon)
+2. **Set Up a Virtual Environment and Install Dependencies:**
+   Using a virtual environment is highly recommended to isolate dependencies.
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+   *Note:* Installing `dlib` and `PyAudio` may require system compilation tools. Refer to their official documentation if issues arise.
 
-Ce prototype met en avant l'importance des considérations éthiques :
-* **Transparence :** L'utilisateur est informé que la vidéo/audio n'est pas enregistrée.
-* **Non-Stockage des Données Brutes :** Seules les métadonnées de détection sont loguées.
-* **Faux Positifs :** Le système est un "indicateur" d'alerte, nécessitant une révision humaine.
-* **Éducation :** L'assistant proactif vise à éduquer plutôt qu'à simplement punir.
+3. **Prepare the Facial Enrollment Image:**
+   - Create a `static/img/` folder at the root of `HackENSET/` if it doesn’t exist.
+   - Place a clear face image named `known_student_face.jpg` in this folder for simulated student enrollment. If omitted, a placeholder image is generated at startup.
 
-## Limitations du MVP
+4. **Launch the Flask Application:**
+   ```bash
+   python app.py
+   ```
+   The server will start and be accessible at `http://127.0.0.1:5000/` or `http://localhost:5000/`.
 
-* Les modèles d'IA sont simplifiés ou utilisent des bibliothèques pré-entraînées avec des logiques de détection basiques. Ils ne sont pas entraînés sur des datasets spécifiques à la fraude académique.
-* L'intégration audio/vidéo en temps réel via HTTP POST est une simplification. Pour une solution robuste, des WebSockets seraient préférables.
-* La gestion des utilisateurs et l'authentification sont absentes.
-* La base de données SQLite est simple et ne gère pas la concurrence pour un déploiement à grande échelle.
+## Using the Application
 
-Ce projet est une preuve de concept pour le Hackathon IA Vigilante, démontrant une approche holistique et éthique de la préservation de l'intégrité académique.
-=======
-# Welcome to your Expo app 👋
+- **Home Page (`/`):** Select either the Student or Educator portal.
+- **Student Portal (`/student`):**
+  - **Text Analysis:** Paste text and click "Analyze Assignment" to view results (plagiarism, AI detection).
+  - **Exam Simulation:** Click "Start Exam," grant webcam and microphone permissions, and observe real-time alerts. End with "Stop Exam."
+  - **Proactive Assistant:** Engage with the chatbot for academic integrity queries.
+- **Educator Dashboard (`/educator`):**
+  - Review logged detection alerts (textual and visual/audio), updated automatically.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Ethical Considerations
 
-## Get started
+This prototype prioritizes ethical design:
+- **Transparency:** Users are informed that no video or audio is recorded.
+- **Non-Storage of Raw Data:** Only detection metadata is logged.
+- **False Positives:** Acts as an alert indicator, requiring human review.
+- **Education:** The assistant focuses on educating rather than punishing.
 
-1. Install dependencies
+## Limitations of the MVP
 
+- Simplified AI models use pre-trained libraries with basic detection logic, not tailored to academic fraud datasets.
+- Real-time audio/video integration relies on HTTP POST, a simplification; WebSockets would be ideal for robustness.
+- Lacks user management and authentication.
+- SQLite database is basic and not suited for concurrent, large-scale use.
+
+## Mobile Application (Expo App)
+
+The React Native mobile app, built with Expo, extends the SIPA prototype’s functionality.
+
+### Get Started
+
+1. **Install Dependencies:**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. **Start the App:**
    ```bash
    npx expo start
    ```
+   Options to run the app include:
+   - [Development Build](https://docs.expo.dev/develop/development-builds/introduction/)
+   - [Android Emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+   - [iOS Simulator](https://docs.expo.dev/workflow/ios-simulator/)
+   - [Expo Go](https://expo.dev/go) (a sandbox for testing)
 
-In the output, you'll find options to open the app in a
+   Edit files in the **app** directory to develop, using [file-based routing](https://docs.expo.dev/router/introduction).
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Get a Fresh Project
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+To reset and start anew:
 ```bash
 npm run reset-project
 ```
+This moves starter code to **app-example** and creates a blank **app** directory.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Learn More
 
-## Learn more
+Explore these resources for Expo development:
+- [Expo Documentation](https://docs.expo.dev/): Core concepts and advanced [guides](https://docs.expo.dev/guides).
+- [Learn Expo Tutorial](https://docs.expo.dev/tutorial/introduction/): Step-by-step project creation for Android, iOS, and web.
 
-To learn more about developing your project with Expo, look at the following resources:
+### Join the Community
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
->>>>>>> 792537a (the starting of the implimentation of the React Native App of the prototype)
+Connect with developers:
+- [Expo on GitHub](https://github.com/expo/expo): Contribute to the open-source platform.
+- [Discord Community](https://chat.expo.dev): Discuss and seek help.
