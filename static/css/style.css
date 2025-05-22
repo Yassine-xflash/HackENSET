@@ -1,0 +1,110 @@
+/* sipa_app/static/css/style.css */
+
+/* Importation de la police Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Fond clair */
+    color: #333;
+}
+
+/* Styles pour les sections de l'application */
+.dashboard-section {
+    background-color: white;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    padding: 1.5rem; /* p-6 */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Styles pour les boutons */
+.btn-primary {
+    @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200;
+}
+
+.btn-secondary {
+    @apply bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors duration-200;
+}
+
+/* Styles spécifiques pour la vidéo et le canvas */
+#webcamVideo, #webcamCanvas {
+    width: 100%;
+    max-width: 640px; /* Limiter la largeur pour une meilleure présentation */
+    height: auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+/* Styles pour le chatbox */
+.chat-box {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0; /* border-gray-200 */
+    border-radius: 0.5rem; /* rounded-md */
+    padding: 1rem;
+    background-color: #f8fafc; /* bg-gray-50 */
+}
+
+.chat-message {
+    margin-bottom: 0.75rem;
+}
+
+.chat-message.user {
+    text-align: right;
+}
+
+.chat-message.bot {
+    text-align: left;
+}
+
+.chat-bubble {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 1.25rem; /* rounded-full */
+    max-width: 80%;
+}
+
+.chat-bubble.user {
+    background-color: #3b82f6; /* bg-blue-500 */
+    color: white;
+}
+
+.chat-bubble.bot {
+    background-color: #e2e8f0; /* bg-gray-200 */
+    color: #333;
+}
+
+/* Styles pour les alertes éducateur */
+.alert-item {
+    border-left-width: 4px; /* border-l-4 */
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.alert-item.high {
+    border-color: #ef4444; /* border-red-500 */
+    background-color: #fef2f2; /* bg-red-50 */
+}
+
+.alert-item.medium {
+    border-color: #f59e0b; /* border-yellow-500 */
+    background-color: #fffbeb; /* bg-yellow-50 */
+}
+
+.alert-item.low {
+    border-color: #34d399; /* border-green-500 */
+    background-color: #ecfdf5; /* bg-green-50 */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard-section {
+        padding: 1rem;
+    }
+    .chat-bubble {
+        max-width: 95%;
+    }
+}

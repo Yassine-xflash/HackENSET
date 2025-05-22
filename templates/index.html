@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil - SIPA{% endblock %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-[calc(100vh-180px)] text-center">
+    <h2 class="text-4xl font-extrabold text-blue-800 mb-6">Bienvenue sur SIPA</h2>
+    <p class="text-xl text-gray-700 mb-8 max-w-2xl">
+        Votre Système Intelligent de Préservation de l'Intégrité Académique.
+        Nous détectons la fraude et promouvons l'apprentissage éthique.
+    </p>
+
+    <div class="flex space-x-6">
+        <a href="{{ url_for('student_dashboard') }}" class="btn-primary text-xl px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            Je suis un Étudiant
+        </a>
+        <a href="{{ url_for('educator_dashboard') }}" class="btn-secondary text-xl px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            Je suis un Éducateur
+        </a>
+    </div>
+</div>
+{% endblock %}
