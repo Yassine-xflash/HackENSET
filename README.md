@@ -23,7 +23,7 @@ Suivez ces étapes pour configurer et lancer l'application localement :
 1.  **Cloner le dépôt :**
     ```bash
     git clone https://github.com/Yassine-xflash/HackENSET.git
-    cd sipa_app
+    cd HackENSET
     ```
 
 2.  **Créer un environnement virtuel et installer les dépendances :**
@@ -36,7 +36,7 @@ Suivez ces étapes pour configurer et lancer l'application localement :
     *Note : L'installation de `dlib` et `PyAudio` peut nécessiter des outils de compilation système. Référez-vous à leur documentation officielle si vous rencontrez des erreurs.*
 
 3.  **Préparer l'image d'enrôlement facial :**
-    Créez un dossier `static/img/` à la racine de `sipa_app/` si ce n'est pas déjà fait.
+    Créez un dossier `static/img/` à la racine de `HackENSET/` si ce n'est pas déjà fait.
     Placez une image de visage claire nommée `known_student_face.jpg` dans ce dossier. Cette image sera utilisée pour simuler l'enrôlement de l'étudiant de démonstration. Si vous ne placez pas d'image, une image placeholder sera générée au démarrage.
 
 4.  **Lancer l'application Flask :**
