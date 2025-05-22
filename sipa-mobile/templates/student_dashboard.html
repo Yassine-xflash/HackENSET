@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Tableau de Bord Étudiant - SIPA{% endblock %}
+
+{% block content %}
+<div id="student-dashboard" class="container mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">Mon Espace Intégrité Académique</h2>
+    <p class="text-gray-600 mb-8">Bienvenue, <span id="student-id-display" class="font-semibold text-blue-600">{{ student_id }}</span>. Ici, vous pouvez vérifier l'intégrité de vos travaux et simuler un examen sous surveillance.</p>
+
+    <div class="dashboard-section">
+        <h3 class="text-2xl font-semibold text-gray-700 mb-4">1. Analyse de Soumission Textuelle</h3>
+        <p class="text-gray-600 mb-4">Collez votre devoir ci-dessous pour une analyse de plagiat et de contenu généré par IA. Ceci est un outil d'apprentissage pour vous aider à améliorer votre intégrité académique.</p>
+        <textarea id="submissionText" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 h-48 mb-4" placeholder="Collez votre texte ici..."></textarea>
+        <button id="submitTextBtn" class="btn-primary">Analyser le Devoir</button>
+        <div id="text-detection-results" class="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <p class="text-gray-500">Les résultats de l'analyse textuelle apparaîtront ici.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h3 class="text-2xl font-semibold text-gray-700 mb-4">2. Simulation d'Examen en Temps Réel</h3>
+        <p class="text-gray-600 mb-4">Activez votre webcam et microphone pour simuler un examen sous surveillance. Le système détectera l'usurpation d'identité, les mouvements anormaux, les objets suspects et les voix externes. **Aucune vidéo ou audio n'est enregistrée.**</p>
+        <div class="flex justify-center items-center mb-4">
+            <video id="webcamVideo" autoplay muted class="rounded-xl shadow-md border border-gray-300"></video>
+            <canvas id="webcamCanvas" class="hidden"></canvas> </div>
+        <div class="flex justify-center space-x-4 mb-4">
+            <button id="startExamBtn" class="btn-primary">Démarrer l'Examen</button>
+            <button id="stopExamBtn" class="btn-secondary hidden">Arrêter l'Examen</button>
+        </div>
+        <div id="realtime-detection-results" class="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <p class="text-gray-500">Les résultats de la détection en temps réel apparaîtront ici.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h3 class="text-2xl font-semibold text-gray-700 mb-4">3. Assistant Proactif d'Intégrité (Chatbot)</h3>
+        <p class="text-gray-600 mb-4">Posez-moi des questions sur l'intégrité académique, la citation, le paraphrasing, ou comment gérer le stress en examen. Je suis là pour vous aider !</p>
+        <div id="chatbot-messages" class="chat-box mb-4">
+            <div class="chat-message bot mb-3">
+                <span class="chat-bubble bot px-4 py-2 rounded-full">Bonjour ! Comment puis-je vous aider avec l'intégrité académique ?</span>
+            </div>
+        </div>
+        <div class="flex">
+            <input type="text" id="chatInput" class="flex-grow p-3 border border-gray-300 rounded-l-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700" placeholder="Tapez votre question...">
+            <button id="sendChatBtn" class="btn-primary rounded-l-none">Envoyer</button>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+            <button class="btn-secondary px-3 py-1 text-sm" onclick="document.getElementById('chatInput').value='Comment citer une source ?'; document.getElementById('sendChatBtn').click();">Comment citer ?</button>
+            <button class="btn-secondary px-3 py-1 text-sm" onclick="document.getElementById('chatInput').value='Qu\'est-ce que le plagiat ?'; document.getElementById('sendChatBtn').click();">Qu'est-ce que le plagiat ?</button>
+            <button class="btn-secondary px-3 py-1 text-sm" onclick="document.getElementById('chatInput').value='Conseils pour éviter la triche ?'; document.getElementById('sendChatBtn').click();">Éviter la triche</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
